@@ -1,3 +1,6 @@
+//made with Love by Amber Krause 
+//Date created: 11/11/20
+
 public class Square {
     Piece piece;
     String color;
