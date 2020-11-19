@@ -1,51 +1,52 @@
-//made with Love by Amber Krause 
-//Date created: 11/11/20
+package com.company;
 
 public class Square {
+    //Piece piece
     Piece piece;
     String color;
     int x;
     int y;
 
-    public Square(){
 
-    }
-
-    public Piece getPiece() {
+    public Piece getPiece(){
         return piece;
     }
 
-    public void setPiece(Piece piece) {
+    public void setPiece(Piece piece){
         this.piece = piece;
     }
 
-    public String getColor() {
+
+    public String getColor(){
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(String color){
         this.color = color;
     }
 
-    public int getX() {
+    public int getX(){
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(int x){
         this.x = x;
     }
 
-    public int getY() {
+    public int getY(){
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(int y){
         this.y = y;
     }
+
     public Square(Piece piece, String color, int x, int y){
         this.piece = piece;
         this.color = color;
         this.x = x;
         this.y = y;
     }
+
+
 }
