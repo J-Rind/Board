@@ -30,6 +30,19 @@ public class Board {
                 squares[x][y] = new Square();
             }
         }
+      /*  public void resetBoard(){
+
+            Scanner kb = new Scanner(System.in);
+            String reset = "";
+            reset.equalsIgnoreCase("reset");
+            try {
+                if (kb.hasNext(reset)) {
+                    setBoard();
+                }
+            } catch (Exception exception) {
+                System.out.println("Not a valid input");
+            }
+        }*/
 
         //for loop to cycle through rows to establish setup of board
         for(int x = 0; x< 8; x++){
