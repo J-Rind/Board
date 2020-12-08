@@ -30,19 +30,6 @@ public class Board {
                 squares[x][y] = new Square();
             }
         }
-      /*  public void resetBoard(){
-
-            Scanner kb = new Scanner(System.in);
-            String reset = "";
-            reset.equalsIgnoreCase("reset");
-            try {
-                if (kb.hasNext(reset)) {
-                    setBoard();
-                }
-            } catch (Exception exception) {
-                System.out.println("Not a valid input");
-            }
-        }*/
 
         //for loop to cycle through rows to establish setup of board
         for(int x = 0; x< 8; x++){
@@ -86,14 +73,14 @@ public class Board {
 
 
     //sets the front row of pieces
-    public void setFront(int row, ArrayList<Piece> pieces, String color){
-        for(int y = 1; y < 2; y++){
+    public void setFront(int row, ArrayList<com.company.Piece> pieces, String color){
+        for(int y = 0; y < 8; y++){
             //make piece object
             Piece thisPiece = new Piece();
             //calls function and passes piece object with coordinates
             setPieceOnSquare(thisPiece,row,y);
             //passes color and coordinates
-            thisPiece.setName("--" + color + row + "-" + y + "-");
+            thisPiece.setName("--" + color + "pawn-" +  row + "-" + y + "-");
             //keeps track of pieces in arraylist
             pieces.add(thisPiece);
         }
@@ -107,7 +94,7 @@ public class Board {
     public void setBack(int row, ArrayList<Piece> pieces, String color){
         //the order of the back row is rook, knight, bishop, queen, king, bishop, knight, rook, from left to right
         //so we used a switch to build each specific piece as the for loop iterates through each square
-        for(int y = 1; y < 2; y++){
+        for(int y = 0; y < 8; y++){
             switch(y){
                 case 0:
                     // creates piece object
@@ -115,7 +102,7 @@ public class Board {
                     // calls function to set piece on the square while passing the object and coordinate
                     setPieceOnSquare(rookPiece,row,y);
                     //sets the falue of the piece
-                    rookPiece.setName("--" + color + row + "-" + y + "-");
+                    rookPiece.setName("--" + color + "-rk1-" + row + "-" + y + "-");
                     //keeps track of pieces in arraylist
                     pieces.add(rookPiece);
                     break;
@@ -124,43 +111,43 @@ public class Board {
                 case 1:
                     Piece knightPiece = new Piece();
                     setPieceOnSquare(knightPiece,row,y);
-                    knightPiece.setName("--" + color + row + "-" + y + "-");
+                    knightPiece.setName("--" + color + "-kn1-" + row + "-" + y + "-");
                     pieces.add(knightPiece);
                     break;
                 case 2:
                     Piece bishopPiece = new Piece();
                     setPieceOnSquare(bishopPiece,row,y);
-                    bishopPiece.setName("--" + color + row + "-" + y + "-");
+                    bishopPiece.setName("--" + color + "-bi1-" + row + "-" + y + "-");
                     pieces.add(bishopPiece);
                     break;
                 case 3:
                     Piece queenPiece = new Piece();
                     setPieceOnSquare(queenPiece,row,y);
-                    queenPiece.setName("--" + color + row + "-" + y + "-");
+                    queenPiece.setName("--" + color + "-qu1-" + row + "-" + y + "-");
                     pieces.add(queenPiece);
                     break;
                 case 4:
                     Piece kingPiece = new Piece();
                     setPieceOnSquare(kingPiece,row,y);
-                    kingPiece.setName("--" + color + row + "-" + y + "-");
+                    kingPiece.setName("--" + color + "-kg1-" + row + "-" + y + "-");
                     pieces.add(kingPiece);
                     break;
                 case 5:
                     Piece bishopPiece1 = new Piece();
                     setPieceOnSquare(bishopPiece1,row,y);
-                    bishopPiece1.setName("--" + color + row + "-" + y + "-");
+                    bishopPiece1.setName("--" + color + "-bi2-" + row + "-" + y + "-");
                     pieces.add(bishopPiece1);
                     break;
                 case 6:
                     Piece knightPiece1 = new Piece();
                     setPieceOnSquare(knightPiece1,row,y);
-                    knightPiece1.setName("--" + color + row + "-" + y + "-");
+                    knightPiece1.setName("--" + color + "-kn2-" + row + "-" + y + "-");
                     pieces.add(knightPiece1);
                     break;
                 case 7:
                     Piece rookPiece1 = new Piece();
                     setPieceOnSquare(rookPiece1,row,y);
-                    rookPiece1.setName("--" + color + row + "-" + y + "-");
+                    rookPiece1.setName("--" + color + "-rk2-" + row + "-" + y + "-");
                     pieces.add(rookPiece1);
                     break;
             }
@@ -177,7 +164,7 @@ public class Board {
             //calls set function to pass empty piece and coordinates
             setPieceOnSquare(emptyPiece, row, y);
             //sets the "blank" value of the empty piece
-            emptyPiece.setName("__" + row + "-" + y + "__");
+            emptyPiece.setName("____" + row + "--" + y + "____");
         }
     }
 
@@ -202,18 +189,38 @@ public class Board {
     }
 
     //Display the board
-    public void showBoard(){
+    public ArrayList<Piece> showBoard(){
+        ArrayList<Piece> tempList = new ArrayList<>();
         for(int x=0; x<8; x++){
             for(int y = 0; y<8; y++){
                 //displays the square in each column
-                System.out.println(squares[x][y].getPiece());
+                System.out.print(squares[x][y].getPiece().getName());
+                tempList.add(squares[x][y].getPiece());
             }
             //displays the square in each row
             //starts displaying a  new row of squares once
             // all previous squares were displayed in the previous row
             System.out.println();
         }
+        return tempList;
     }
+
+
+    public void resetBoard(){
+        for(int x = 0; x <8; x++){
+            //nested for loop to cycle through all rows and columns of board
+            for(int y = 0; y < 8; y++){
+                //remove all pieces on the board
+                removePieceOnSpace(x, y);
+            }
+        }
+
+        //set board back to beginning
+        setBoard();
+    }
+
+
+
 
 
 }
