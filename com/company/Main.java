@@ -7,5 +7,11 @@ public class Main {
         Board myBoard = new Board();
 
         myBoard.showBoard();
+
+
+        myBoard.saveBoard();
+
+
+        myBoard.loadBoard();
     }
 }
