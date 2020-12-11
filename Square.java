@@ -8,7 +8,8 @@ public class Square {
     int x;
     int y;
 
-
+public Square(){
+}
     public Piece getPiece(){            //Will return what piece is in the square
         return piece;
     }
