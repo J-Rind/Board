@@ -545,7 +545,7 @@ public class Board implements Serializable {
 
 
                 System.out.print(squares[x][y].getPiece().getName());
-                if (Piece.isAlive == true) {
+                if (squares[x][y].getPiece().getAlive() == true) {
                     tempList.add(squares[x][y].getPiece());
                 }
             }
