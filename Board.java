@@ -175,11 +175,10 @@ public class Board {
         char c2= coords[2].charAt(0);
         int x2= c2-10;
         int y2= Integer.parseInt(coords[3])-1;
-        // check if other piece is in destination square, remove if so
-        // retrieve piece name/object to call setPiece along with x2 and y2
+        setPieceOnSquare(squares[x1][y1].getPiece,x2,y2);
         removePieceOnSpace(x1,y1);
     }
-
+    
     //sets piece on square
     public void setPieceOnSquare(Piece piece, int x, int y) {
         //gets passed the piece and coordinates
