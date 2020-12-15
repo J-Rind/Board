@@ -170,11 +170,11 @@ public class Board {
     public void receiveMove (String input){
         String[] coords= input.split("");
         char c1= coords[0].charAt(0);
-        int x1= Character.getNumericValue(c1)-97;
-        int y1= Integer.parseInt(coords[1]);
+        int x1= c1-10;
+        int y1= Integer.parseInt(coords[1])-1;
         char c2= coords[2].charAt(0);
-        int x2= Character.getNumericValue(c1)-97;
-        int y2= Integer.parseInt(coords[3]);
+        int x2= c2-10;
+        int y2= Integer.parseInt(coords[3])-1;
         // check if other piece is in destination square, remove if so
         // retrieve piece name/object to call setPiece along with x2 and y2
         removePieceOnSpace(x1,y1);
