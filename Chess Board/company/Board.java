@@ -428,18 +428,16 @@ public class Board implements Serializable {
         }
     }
 
-    public int receiveMove(Piece piece, String input){
-        int x = 0;
-        int y = 0;
-
-
-
-
-
-
-
-
-        return x + y;
+   public void receiveMove (String input){
+        String[] coords= input.split("");
+        char c1= coords[0].charAt(0);
+        int x1= c1-10;
+        int y1= Integer.parseInt(coords[1])-1;
+        char c2= coords[2].charAt(0);
+        int x2= c2-10;
+        int y2= Integer.parseInt(coords[3])-1;
+        setPieceOnSquare(squares[x1][y1].getPiece,x2,y2);
+        removePieceOnSpace(x1,y1);
     }
 
 
