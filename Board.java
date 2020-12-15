@@ -58,8 +58,6 @@ public class Board implements Serializable {
             for(int y = 0; y < 8; y++){
 
 
-
-
                 //2d array of squares using 8x8 grid makes board
                 //using each square made by the for loop and nested for loop to iterate through
                 //all 64 squares of the board
@@ -428,27 +426,16 @@ public class Board implements Serializable {
         }
     }
 
-    public void receiveMove(Piece piece, String input){
-        int x = 0;
-        int y = 0;
-        Piece movePiece = new Piece();
-
-        //receiving what piece to move
-        //receiving where piece is going as string
-
-        //need to identify piece - this method's job
-
-        //parse the string to get the target coordinate - this method's job
-
-        //removing the piece from the square - this method already exists
-
-        //setting the piece on the target square - this method already exists
-
-
-        //pass values to other methods
-        removePieceOnSpace(x, y);
-
-        setPieceOnSquare(movePiece, x, y);
+    public void receiveMove (String input){
+        String[] coords= input.split("");
+        char c1= coords[0].charAt(0);
+        int x1= c1-10;
+        int y1= Integer.parseInt(coords[1])-1;
+        char c2= coords[2].charAt(0);
+        int x2= c2-10;
+        int y2= Integer.parseInt(coords[3])-1;
+        setPieceOnSquare(squares[x1][y1].getPiece,x2,y2);
+        removePieceOnSpace(x1,y1);
     }
 
 
