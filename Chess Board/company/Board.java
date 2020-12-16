@@ -15,8 +15,6 @@ public class Board implements Serializable {
     //arraylist to store the white pieces
     ArrayList<Piece> whitePiece = new ArrayList<>();
 
-
-
     //board constructor
     public Board(){
         this.setBoard();
@@ -56,10 +54,6 @@ public class Board implements Serializable {
         for(int x = 0; x <8; x++){
             //nested for loop builds rows
             for(int y = 0; y < 8; y++){
-
-
-
-
                 //2d array of squares using 8x8 grid makes board
                 //using each square made by the for loop and nested for loop to iterate through
                 //all 64 squares of the board
@@ -103,10 +97,7 @@ public class Board implements Serializable {
                     break;
             }
         }
-
-
     }
-
 
     //sets the front row of pieces
     public void setFront(int row, ArrayList<Piece> pieces, String color, Boolean isWhite){
@@ -150,7 +141,6 @@ public class Board implements Serializable {
 
         for(int y = 0; y < 8; y++){
 
-
             if (y == 0)
             {
                 ycord = 'A';
@@ -184,8 +174,6 @@ public class Board implements Serializable {
                 ycord = 'H';
             }
 
-
-
             //make piece object
             Pawn pawnPiece = new Pawn(row, y, "-" + color + "-pawn-" + ycord + "-" + xcord + "-", isWhite);
             //calls function and passes piece object with coordinates
@@ -196,16 +184,11 @@ public class Board implements Serializable {
             pieces.add(pawnPiece);
         }
     }
-
-
-
+    
     //sets the back row pieces
     //as the order of the back row is the same for both the black and white
     //the function just has to cycle through the same order for both sides of the board
     public void setBack(int row, ArrayList<Piece> pieces, String color, Boolean isWhite){
-
-
-
         char xcord = 0;
         char ycord = 0;
 
@@ -242,12 +225,9 @@ public class Board implements Serializable {
             xcord = '1';
         }
 
-
-
         //the order of the back row is rook, knight, bishop, queen, king, bishop, knight, rook, from left to right
         //so we used a switch to build each specific piece as the for loop iterates through each square
         for(int y = 0; y < 8; y++){
-
             if (y == 0)
             {
                 ycord = 'A';
@@ -335,11 +315,8 @@ public class Board implements Serializable {
                     pieces.add(rookPiece1);
                     break;
             }
-
         }
     }
-
-
     //sets blank rows at the beginning of the game
     public void setBlanks(int row){
 
@@ -380,8 +357,6 @@ public class Board implements Serializable {
         }
 
         for(int y = 0; y < 8; y++) {
-
-
             if (y == 0)
             {
                 ycord = 'A';
@@ -414,8 +389,7 @@ public class Board implements Serializable {
             {
                 ycord = 'H';
             }
-
-
+            
             //makes empty piece object
             Piece emptyPiece = new Piece();
             //calls set function to pass empty piece and coordinates
@@ -440,7 +414,6 @@ public class Board implements Serializable {
         removePieceOnSpace(x1,y1);
     }
 
-
     //sets piece on square
     public void setPieceOnSquare(Piece piece, int x, int y) {
         try {
@@ -451,12 +424,8 @@ public class Board implements Serializable {
             System.out.println(ex);
         }
     }
-
-
     //remove pieces from board
     public void removePieceOnSpace(int x, int y){
-
-
         char xcord = 0;
         char ycord = 0;
 
@@ -492,7 +461,6 @@ public class Board implements Serializable {
         {
             xcord = 'H';
         }
-
         if (y == 0)
         {
             ycord = '1';
@@ -542,16 +510,11 @@ public class Board implements Serializable {
 
     //Display the board
     public ArrayList<Piece> showBoard(){
-
-
         ArrayList<Piece> tempList = new ArrayList<>();
         for(int x=0; x<8; x++){
             for(int y = 0; y<8; y++){
                 //displays the square in each column
                 //System.out.print(squares[x][y].getPiece().getName());
-
-
-
                 System.out.print(squares[x][y].getPiece().getName());
                 if (squares[x][y].getPiece().getAlive() == true) {
                     if (!squares[x][y].getPiece().getName().contains("--")){
@@ -566,8 +529,6 @@ public class Board implements Serializable {
         }
         return tempList;
     }
-
-
     public void resetBoard(){
         for(int x = 0; x <8; x++){
             //nested for loop to cycle through all rows and columns of board
@@ -576,12 +537,9 @@ public class Board implements Serializable {
                 removePieceOnSpace(x, y);
             }
         }
-
         //set board back to beginning
         setBoard();
     }
-
-
     public void saveBoard(){
         ArrayList<Piece> tempList = new ArrayList<>();
         for (int x = 0; x < 8; x++) {
@@ -605,19 +563,12 @@ public class Board implements Serializable {
         //Board boardReader = new Board();
         try {
             XMLDecoder dec = new XMLDecoder(new BufferedInputStream(new FileInputStream("XMLFile.xml")));
-
             Board boardReader = (Board) dec.readObject();
             System.out.println();
             dec.close();
         } catch (Exception e) {
             System.out.println(e);
         }
-
     }
-
-
-
-
-
 }
 
