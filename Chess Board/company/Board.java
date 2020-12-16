@@ -137,8 +137,7 @@ public class Board implements Serializable {
         {
             xcord = '1';
         }
-
-
+        
         for(int y = 0; y < 8; y++){
 
             if (y == 0)
@@ -396,7 +395,6 @@ public class Board implements Serializable {
             emptyPiece.setName("____" + ycord + "--" + xcord + "____");
             setPieceOnSquare(emptyPiece, row, y);
             emptyPiece.setIsAlive(false);
-
             //sets the "blank" value of the empty piece
             //emptyPiece.setName("____" + xcord + "--" + ycord + "____");
         }
@@ -571,4 +569,3 @@ public class Board implements Serializable {
         }
     }
 }
-
